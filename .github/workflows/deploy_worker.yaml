@@ -24,4 +24,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: workers deploy .svelte-kit/cloudflare --project-name=my-sveltekit-app
+          command: deploy .svelte-kit/cloudflare
