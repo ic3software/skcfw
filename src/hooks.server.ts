@@ -1,14 +1,7 @@
 export async function handle({ event, resolve }) {
     const pathname = new URL(event.request.url).pathname;
 
-    let limiter: any;
-
-    try {
-        // @ts-ignore
-        limiter = MY_RATE_LIMITER;
-    } catch {
-        limiter = null;
-    }
+    const limiter = event.platform?.env.RATE_LIMITER;
 
     if (limiter && typeof limiter.limit === 'function') {
         const { success } = await limiter.limit({ key: pathname });
